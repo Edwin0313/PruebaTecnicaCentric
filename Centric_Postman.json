@@ -1,0 +1,848 @@
+{
+	"info": {
+		"_postman_id": "9dc53654-3a76-4bcf-97b2-271b494738de",
+		"name": "CentricBackend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3125884"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "clientes",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/clientes/:id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/clientes/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"clientes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/clientes/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"clientes",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/clientes/:id",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"contrasena\": \"string\",\n  \"direccion\": \"string\",\n  \"nombres\": \"str\",\n  \"telefono\": \"string\",\n  \"clienteId\": \"49c5ca00-0d22-1b3c-d2a9-53dcd7bcc19d\",\n  \"estado\": true,\n  \"cuentas\": [\n    {\n      \"numeroCuenta\": \"stri\",\n      \"tipoCuenta\": \"string\",\n      \"cuentaId\": \"595aa8be-32bf-8d94-ebc1-edb68d2f9cd1\",\n      \"saldoInicial\": 5306.838214564295,\n      \"estado\": false,\n      \"clienteId\": \"c3180d89-bc84-065f-a79f-0fcb03626071\",\n      \"cliente\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n      },\n      \"movimientos\": [\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"e6077aa0-7e17-16d4-7e43-dd3fb9f92fdd\",\n          \"fecha\": \"2010-04-23T13:56:52.161Z\",\n          \"valor\": 3461.832141499377,\n          \"saldo\": 2276.391610897386,\n          \"cuentaId\": \"0ec40efc-af4c-bba3-a04e-034e339b68c1\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        },\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"98d661ad-0f7e-2635-68b5-2c7c3b636210\",\n          \"fecha\": \"1999-11-26T05:35:12.287Z\",\n          \"valor\": 8460.978578537091,\n          \"saldo\": 1345.7140029165316,\n          \"cuentaId\": \"b520e5b9-8448-8ab4-6bf8-1f7df32d2437\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        }\n      ]\n    },\n    {\n      \"numeroCuenta\": \"strin\",\n      \"tipoCuenta\": \"strin\",\n      \"cuentaId\": \"0e37115e-1794-4361-1e0a-967bf7a9c859\",\n      \"saldoInicial\": 4440.868507946272,\n      \"estado\": true,\n      \"clienteId\": \"163e6b23-fe5a-e6d9-d2dd-1dd288459794\",\n      \"cliente\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n      },\n      \"movimientos\": [\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"559e853a-13fc-1f19-26a9-ba60a96f41fd\",\n          \"fecha\": \"1962-04-15T08:43:09.046Z\",\n          \"valor\": 5718.519253805099,\n          \"saldo\": 767.6699838439749,\n          \"cuentaId\": \"410c6756-219c-91d2-2d82-59a2491d813d\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        },\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"18d90346-3a21-744f-c7f6-2ea786767f39\",\n          \"fecha\": \"2007-04-18T17:53:15.483Z\",\n          \"valor\": 8712.397237956344,\n          \"saldo\": 1994.6752871975227,\n          \"cuentaId\": \"e60b59b3-ca20-1fcf-396f-3f7aad058c7e\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/clientes/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"clientes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"contrasena\": \"string\",\n  \"direccion\": \"string\",\n  \"nombres\": \"str\",\n  \"telefono\": \"string\",\n  \"clienteId\": \"49c5ca00-0d22-1b3c-d2a9-53dcd7bcc19d\",\n  \"estado\": true,\n  \"cuentas\": [\n    {\n      \"numeroCuenta\": \"stri\",\n      \"tipoCuenta\": \"string\",\n      \"cuentaId\": \"595aa8be-32bf-8d94-ebc1-edb68d2f9cd1\",\n      \"saldoInicial\": 5306.838214564295,\n      \"estado\": false,\n      \"clienteId\": \"c3180d89-bc84-065f-a79f-0fcb03626071\",\n      \"cliente\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n      },\n      \"movimientos\": [\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"e6077aa0-7e17-16d4-7e43-dd3fb9f92fdd\",\n          \"fecha\": \"2010-04-23T13:56:52.161Z\",\n          \"valor\": 3461.832141499377,\n          \"saldo\": 2276.391610897386,\n          \"cuentaId\": \"0ec40efc-af4c-bba3-a04e-034e339b68c1\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        },\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"98d661ad-0f7e-2635-68b5-2c7c3b636210\",\n          \"fecha\": \"1999-11-26T05:35:12.287Z\",\n          \"valor\": 8460.978578537091,\n          \"saldo\": 1345.7140029165316,\n          \"cuentaId\": \"b520e5b9-8448-8ab4-6bf8-1f7df32d2437\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        }\n      ]\n    },\n    {\n      \"numeroCuenta\": \"strin\",\n      \"tipoCuenta\": \"strin\",\n      \"cuentaId\": \"0e37115e-1794-4361-1e0a-967bf7a9c859\",\n      \"saldoInicial\": 4440.868507946272,\n      \"estado\": true,\n      \"clienteId\": \"163e6b23-fe5a-e6d9-d2dd-1dd288459794\",\n      \"cliente\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n      },\n      \"movimientos\": [\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"559e853a-13fc-1f19-26a9-ba60a96f41fd\",\n          \"fecha\": \"1962-04-15T08:43:09.046Z\",\n          \"valor\": 5718.519253805099,\n          \"saldo\": 767.6699838439749,\n          \"cuentaId\": \"410c6756-219c-91d2-2d82-59a2491d813d\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        },\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"18d90346-3a21-744f-c7f6-2ea786767f39\",\n          \"fecha\": \"2007-04-18T17:53:15.483Z\",\n          \"valor\": 8712.397237956344,\n          \"saldo\": 1994.6752871975227,\n          \"cuentaId\": \"e60b59b3-ca20-1fcf-396f-3f7aad058c7e\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/clientes/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"clientes",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/clientes/:id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/clientes/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"clientes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/clientes/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"clientes",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/clientes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/clientes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"clientes"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/clientes",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"clientes"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"contrasena\": \"string\",\n    \"direccion\": \"string\",\n    \"nombres\": \"string\",\n    \"telefono\": \"string\",\n    \"clienteId\": \"4f3e5647-e125-ead3-d61e-4ec46a5deab5\",\n    \"estado\": false,\n    \"cuentas\": [\n      {\n        \"numeroCuenta\": \"string\",\n        \"tipoCuenta\": \"string\",\n        \"cuentaId\": \"092ae40e-3951-7833-ecdc-5838ecbc6316\",\n        \"saldoInicial\": 7324.349304383031,\n        \"estado\": false,\n        \"clienteId\": \"304735f3-0d12-11ec-2fcd-2eb7297662da\",\n        \"cliente\": {\n          \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n        },\n        \"movimientos\": [\n          {\n            \"tipoMovimiento\": \"string\",\n            \"movimientoId\": \"c8fff39c-0230-ef75-6f70-c32b2d122cea\",\n            \"fecha\": \"1952-10-09T06:37:33.629Z\",\n            \"valor\": 4320.794143338944,\n            \"saldo\": 6627.716631104681,\n            \"cuentaId\": \"4557db4b-8e20-31bc-7f9b-d5f3f2de3649\",\n            \"cuenta\": {\n              \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n            }\n          },\n          {\n            \"tipoMovimiento\": \"string\",\n            \"movimientoId\": \"416cddde-ce73-1f39-7f4a-7ff2a5c3ce1c\",\n            \"fecha\": \"2017-08-31T02:37:05.036Z\",\n            \"valor\": 6288.33027618189,\n            \"saldo\": 3895.8518726111756,\n            \"cuentaId\": \"5ec6bab5-fb27-20cb-3359-56b912a29ca1\",\n            \"cuenta\": {\n              \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n            }\n          }\n        ]\n      },\n      {\n        \"numeroCuenta\": \"string\",\n        \"tipoCuenta\": \"string\",\n        \"cuentaId\": \"06026224-d61c-c55a-1fc9-043e88a597e1\",\n        \"saldoInicial\": 9256.998209325026,\n        \"estado\": false,\n        \"clienteId\": \"6ea0b7d0-0d1b-fd25-01d8-a0f660353136\",\n        \"cliente\": {\n          \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n        },\n        \"movimientos\": [\n          {\n            \"tipoMovimiento\": \"string\",\n            \"movimientoId\": \"8dfda0e0-a481-531e-4f2e-7c300ca9ba8c\",\n            \"fecha\": \"1950-04-22T09:24:20.343Z\",\n            \"valor\": 2875.205203562372,\n            \"saldo\": 1290.4342649966072,\n            \"cuentaId\": \"90eb5cb5-9600-74c1-ec97-a39c77ad268b\",\n            \"cuenta\": {\n              \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n            }\n          },\n          {\n            \"tipoMovimiento\": \"string\",\n            \"movimientoId\": \"4dd996aa-aa98-c2d7-fd23-084d94b93e89\",\n            \"fecha\": \"2017-01-10T06:44:23.832Z\",\n            \"valor\": 8731.35738534139,\n            \"saldo\": 5851.479878813672,\n            \"cuentaId\": \"d9b6aeb5-6390-9210-8599-5a480b7aa0bc\",\n            \"cuenta\": {\n              \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n            }\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"contrasena\": \"string\",\n    \"direccion\": \"string\",\n    \"nombres\": \"string\",\n    \"telefono\": \"string\",\n    \"clienteId\": \"06f2fbe3-790d-ca4e-d761-75c9b7b1ac8e\",\n    \"estado\": true,\n    \"cuentas\": [\n      {\n        \"numeroCuenta\": \"string\",\n        \"tipoCuenta\": \"str\",\n        \"cuentaId\": \"4bb553fe-0640-9e33-71ca-a1c249aa0c85\",\n        \"saldoInicial\": 4748.343773121169,\n        \"estado\": false,\n        \"clienteId\": \"17338666-862a-9d25-edda-a0e0d5828309\",\n        \"cliente\": {\n          \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n        },\n        \"movimientos\": [\n          {\n            \"tipoMovimiento\": \"string\",\n            \"movimientoId\": \"36feb719-d7ac-fbc5-6f07-b8a890ecdac7\",\n            \"fecha\": \"1957-10-14T22:25:16.760Z\",\n            \"valor\": 4372.696242055238,\n            \"saldo\": 5494.577495331186,\n            \"cuentaId\": \"f1ab3d88-4cce-6dfd-f0d0-c497ae0d7878\",\n            \"cuenta\": {\n              \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n            }\n          },\n          {\n            \"tipoMovimiento\": \"string\",\n            \"movimientoId\": \"ab126171-0ff4-ba3a-1eff-e98a9723f014\",\n            \"fecha\": \"2018-01-11T09:14:32.097Z\",\n            \"valor\": 222.65258362064833,\n            \"saldo\": 820.6951235983184,\n            \"cuentaId\": \"6770fba3-9955-a02a-b06a-9376fe7ead51\",\n            \"cuenta\": {\n              \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n            }\n          }\n        ]\n      },\n      {\n        \"numeroCuenta\": \"string\",\n        \"tipoCuenta\": \"string\",\n        \"cuentaId\": \"531b59fd-7aac-0b3f-fda1-244e4cae3d3a\",\n        \"saldoInicial\": 1186.418527307511,\n        \"estado\": true,\n        \"clienteId\": \"bce5ff69-be5f-c9db-7453-0c0cb5955680\",\n        \"cliente\": {\n          \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n        },\n        \"movimientos\": [\n          {\n            \"tipoMovimiento\": \"str\",\n            \"movimientoId\": \"44a0b6e3-8599-10cc-0a0d-9748ca8c9c3c\",\n            \"fecha\": \"1969-07-05T22:52:32.225Z\",\n            \"valor\": 9577.061255987168,\n            \"saldo\": 1596.7727052864068,\n            \"cuentaId\": \"0021d8d5-c5b5-808f-2f62-c31ccb8f750b\",\n            \"cuenta\": {\n              \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n            }\n          },\n          {\n            \"tipoMovimiento\": \"string\",\n            \"movimientoId\": \"1eddeed5-80b9-a870-f51d-1ad8b1102cf7\",\n            \"fecha\": \"1982-11-29T02:22:51.616Z\",\n            \"valor\": 4566.094066308926,\n            \"saldo\": 9916.263310127926,\n            \"cuentaId\": \"26a176fc-055f-1a3e-05f5-ecb20f05a50e\",\n            \"cuenta\": {\n              \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n            }\n          }\n        ]\n      }\n    ]\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/clientes",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"contrasena\": \"string\",\n  \"direccion\": \"string\",\n  \"nombres\": \"str\",\n  \"telefono\": \"string\",\n  \"clienteId\": \"49c5ca00-0d22-1b3c-d2a9-53dcd7bcc19d\",\n  \"estado\": true,\n  \"cuentas\": [\n    {\n      \"numeroCuenta\": \"stri\",\n      \"tipoCuenta\": \"string\",\n      \"cuentaId\": \"595aa8be-32bf-8d94-ebc1-edb68d2f9cd1\",\n      \"saldoInicial\": 5306.838214564295,\n      \"estado\": false,\n      \"clienteId\": \"c3180d89-bc84-065f-a79f-0fcb03626071\",\n      \"cliente\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n      },\n      \"movimientos\": [\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"e6077aa0-7e17-16d4-7e43-dd3fb9f92fdd\",\n          \"fecha\": \"2010-04-23T13:56:52.161Z\",\n          \"valor\": 3461.832141499377,\n          \"saldo\": 2276.391610897386,\n          \"cuentaId\": \"0ec40efc-af4c-bba3-a04e-034e339b68c1\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        },\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"98d661ad-0f7e-2635-68b5-2c7c3b636210\",\n          \"fecha\": \"1999-11-26T05:35:12.287Z\",\n          \"valor\": 8460.978578537091,\n          \"saldo\": 1345.7140029165316,\n          \"cuentaId\": \"b520e5b9-8448-8ab4-6bf8-1f7df32d2437\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        }\n      ]\n    },\n    {\n      \"numeroCuenta\": \"strin\",\n      \"tipoCuenta\": \"strin\",\n      \"cuentaId\": \"0e37115e-1794-4361-1e0a-967bf7a9c859\",\n      \"saldoInicial\": 4440.868507946272,\n      \"estado\": true,\n      \"clienteId\": \"163e6b23-fe5a-e6d9-d2dd-1dd288459794\",\n      \"cliente\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n      },\n      \"movimientos\": [\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"559e853a-13fc-1f19-26a9-ba60a96f41fd\",\n          \"fecha\": \"1962-04-15T08:43:09.046Z\",\n          \"valor\": 5718.519253805099,\n          \"saldo\": 767.6699838439749,\n          \"cuentaId\": \"410c6756-219c-91d2-2d82-59a2491d813d\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        },\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"18d90346-3a21-744f-c7f6-2ea786767f39\",\n          \"fecha\": \"2007-04-18T17:53:15.483Z\",\n          \"valor\": 8712.397237956344,\n          \"saldo\": 1994.6752871975227,\n          \"cuentaId\": \"e60b59b3-ca20-1fcf-396f-3f7aad058c7e\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/clientes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"clientes"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"contrasena\": \"string\",\n  \"direccion\": \"string\",\n  \"nombres\": \"str\",\n  \"telefono\": \"string\",\n  \"clienteId\": \"49c5ca00-0d22-1b3c-d2a9-53dcd7bcc19d\",\n  \"estado\": true,\n  \"cuentas\": [\n    {\n      \"numeroCuenta\": \"stri\",\n      \"tipoCuenta\": \"string\",\n      \"cuentaId\": \"595aa8be-32bf-8d94-ebc1-edb68d2f9cd1\",\n      \"saldoInicial\": 5306.838214564295,\n      \"estado\": false,\n      \"clienteId\": \"c3180d89-bc84-065f-a79f-0fcb03626071\",\n      \"cliente\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n      },\n      \"movimientos\": [\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"e6077aa0-7e17-16d4-7e43-dd3fb9f92fdd\",\n          \"fecha\": \"2010-04-23T13:56:52.161Z\",\n          \"valor\": 3461.832141499377,\n          \"saldo\": 2276.391610897386,\n          \"cuentaId\": \"0ec40efc-af4c-bba3-a04e-034e339b68c1\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        },\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"98d661ad-0f7e-2635-68b5-2c7c3b636210\",\n          \"fecha\": \"1999-11-26T05:35:12.287Z\",\n          \"valor\": 8460.978578537091,\n          \"saldo\": 1345.7140029165316,\n          \"cuentaId\": \"b520e5b9-8448-8ab4-6bf8-1f7df32d2437\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        }\n      ]\n    },\n    {\n      \"numeroCuenta\": \"strin\",\n      \"tipoCuenta\": \"strin\",\n      \"cuentaId\": \"0e37115e-1794-4361-1e0a-967bf7a9c859\",\n      \"saldoInicial\": 4440.868507946272,\n      \"estado\": true,\n      \"clienteId\": \"163e6b23-fe5a-e6d9-d2dd-1dd288459794\",\n      \"cliente\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n      },\n      \"movimientos\": [\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"559e853a-13fc-1f19-26a9-ba60a96f41fd\",\n          \"fecha\": \"1962-04-15T08:43:09.046Z\",\n          \"valor\": 5718.519253805099,\n          \"saldo\": 767.6699838439749,\n          \"cuentaId\": \"410c6756-219c-91d2-2d82-59a2491d813d\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        },\n        {\n          \"tipoMovimiento\": \"string\",\n          \"movimientoId\": \"18d90346-3a21-744f-c7f6-2ea786767f39\",\n          \"fecha\": \"2007-04-18T17:53:15.483Z\",\n          \"valor\": 8712.397237956344,\n          \"saldo\": 1994.6752871975227,\n          \"cuentaId\": \"e60b59b3-ca20-1fcf-396f-3f7aad058c7e\",\n          \"cuenta\": {\n            \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/clientes",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"clientes"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "cuentas",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/cuentas/:id",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"numeroCuenta\": \"string\",\n  \"tipoCuenta\": \"strin\",\n  \"cuentaId\": \"de619a16-8369-ea0a-e72d-8d88268bbee7\",\n  \"saldoInicial\": 553.880434935139,\n  \"estado\": true,\n  \"clienteId\": \"57b78954-9b24-5b2d-aaa5-828335bfef01\",\n  \"cliente\": {\n    \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n  },\n  \"movimientos\": [\n    {\n      \"tipoMovimiento\": \"string\",\n      \"movimientoId\": \"fcd9ae00-f91f-0b46-555c-2ab8e524427a\",\n      \"fecha\": \"1969-06-30T22:27:30.100Z\",\n      \"valor\": 7982.285359323109,\n      \"saldo\": 6089.003380057352,\n      \"cuentaId\": \"930583d2-b5c1-4a73-d78a-a5b4d5c38c24\",\n      \"cuenta\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n      }\n    },\n    {\n      \"tipoMovimiento\": \"s\",\n      \"movimientoId\": \"651fee16-b1a0-2a00-ed11-029f244e6dfa\",\n      \"fecha\": \"2025-07-16T21:00:08.050Z\",\n      \"valor\": 7571.717054202638,\n      \"saldo\": 5740.462006147979,\n      \"cuentaId\": \"56e2012f-7bcb-7f6b-74f0-d68bff834bf1\",\n      \"cuenta\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n      }\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/cuentas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"cuentas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"numeroCuenta\": \"string\",\n  \"tipoCuenta\": \"strin\",\n  \"cuentaId\": \"de619a16-8369-ea0a-e72d-8d88268bbee7\",\n  \"saldoInicial\": 553.880434935139,\n  \"estado\": true,\n  \"clienteId\": \"57b78954-9b24-5b2d-aaa5-828335bfef01\",\n  \"cliente\": {\n    \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n  },\n  \"movimientos\": [\n    {\n      \"tipoMovimiento\": \"string\",\n      \"movimientoId\": \"fcd9ae00-f91f-0b46-555c-2ab8e524427a\",\n      \"fecha\": \"1969-06-30T22:27:30.100Z\",\n      \"valor\": 7982.285359323109,\n      \"saldo\": 6089.003380057352,\n      \"cuentaId\": \"930583d2-b5c1-4a73-d78a-a5b4d5c38c24\",\n      \"cuenta\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n      }\n    },\n    {\n      \"tipoMovimiento\": \"s\",\n      \"movimientoId\": \"651fee16-b1a0-2a00-ed11-029f244e6dfa\",\n      \"fecha\": \"2025-07-16T21:00:08.050Z\",\n      \"valor\": 7571.717054202638,\n      \"saldo\": 5740.462006147979,\n      \"cuentaId\": \"56e2012f-7bcb-7f6b-74f0-d68bff834bf1\",\n      \"cuenta\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/cuentas/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"cuentas",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/cuentas/:id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/cuentas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"cuentas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/cuentas/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"cuentas",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/cuentas",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/cuentas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/cuentas",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"cuentas"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"numeroCuenta\": \"string\",\n    \"tipoCuenta\": \"string\",\n    \"cuentaId\": \"59ded857-8c6e-7aac-e447-72bb6fc4dfb1\",\n    \"saldoInicial\": 543.210967563732,\n    \"estado\": false,\n    \"clienteId\": \"fecb3f54-43f9-0cfb-704d-ada22ed1bb08\",\n    \"cliente\": {\n      \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n    },\n    \"movimientos\": [\n      {\n        \"tipoMovimiento\": \"string\",\n        \"movimientoId\": \"7ed55e3a-369a-eb13-2056-707561fd806f\",\n        \"fecha\": \"1999-01-01T03:48:17.660Z\",\n        \"valor\": 2884.595622210733,\n        \"saldo\": 3155.3378416350597,\n        \"cuentaId\": \"d32ae735-a1a5-3f6d-9fd2-15e49c9ca24e\",\n        \"cuenta\": {\n          \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n        }\n      },\n      {\n        \"tipoMovimiento\": \"string\",\n        \"movimientoId\": \"9987843a-26d6-5fe2-72a5-9bfe4f55db18\",\n        \"fecha\": \"1965-07-02T20:51:39.695Z\",\n        \"valor\": 5395.150031187312,\n        \"saldo\": 802.676756873264,\n        \"cuentaId\": \"703a5ccb-f9af-a43e-1879-bf5ed3a91a36\",\n        \"cuenta\": {\n          \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n        }\n      }\n    ]\n  },\n  {\n    \"numeroCuenta\": \"string\",\n    \"tipoCuenta\": \"string\",\n    \"cuentaId\": \"0203e133-9193-6334-13c8-27b0ed13d728\",\n    \"saldoInicial\": 6386.2943351989525,\n    \"estado\": false,\n    \"clienteId\": \"c10aab66-8cbd-e41c-6d0b-1eed191fe4ec\",\n    \"cliente\": {\n      \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n    },\n    \"movimientos\": [\n      {\n        \"tipoMovimiento\": \"strin\",\n        \"movimientoId\": \"bbba48d9-7de0-a0f5-0f26-c981c73ab82a\",\n        \"fecha\": \"1997-11-25T10:14:35.807Z\",\n        \"valor\": 6553.605669895132,\n        \"saldo\": 9996.19600237331,\n        \"cuentaId\": \"6366be1c-39e4-174d-8226-39e8cbdc7d88\",\n        \"cuenta\": {\n          \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n        }\n      },\n      {\n        \"tipoMovimiento\": \"string\",\n        \"movimientoId\": \"9dd82522-a490-45fb-29f6-a5db68dad3b3\",\n        \"fecha\": \"1973-12-12T04:34:19.781Z\",\n        \"valor\": 2451.4766719351733,\n        \"saldo\": 8704.427972963862,\n        \"cuentaId\": \"a80c0ef7-0990-4e13-ff3e-5447f974a5ff\",\n        \"cuenta\": {\n          \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n        }\n      }\n    ]\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/cuentas",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"numeroCuenta\": \"string\",\n  \"tipoCuenta\": \"strin\",\n  \"cuentaId\": \"de619a16-8369-ea0a-e72d-8d88268bbee7\",\n  \"saldoInicial\": 553.880434935139,\n  \"estado\": true,\n  \"clienteId\": \"57b78954-9b24-5b2d-aaa5-828335bfef01\",\n  \"cliente\": {\n    \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n  },\n  \"movimientos\": [\n    {\n      \"tipoMovimiento\": \"string\",\n      \"movimientoId\": \"fcd9ae00-f91f-0b46-555c-2ab8e524427a\",\n      \"fecha\": \"1969-06-30T22:27:30.100Z\",\n      \"valor\": 7982.285359323109,\n      \"saldo\": 6089.003380057352,\n      \"cuentaId\": \"930583d2-b5c1-4a73-d78a-a5b4d5c38c24\",\n      \"cuenta\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n      }\n    },\n    {\n      \"tipoMovimiento\": \"s\",\n      \"movimientoId\": \"651fee16-b1a0-2a00-ed11-029f244e6dfa\",\n      \"fecha\": \"2025-07-16T21:00:08.050Z\",\n      \"valor\": 7571.717054202638,\n      \"saldo\": 5740.462006147979,\n      \"cuentaId\": \"56e2012f-7bcb-7f6b-74f0-d68bff834bf1\",\n      \"cuenta\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n      }\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/cuentas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"numeroCuenta\": \"string\",\n  \"tipoCuenta\": \"strin\",\n  \"cuentaId\": \"de619a16-8369-ea0a-e72d-8d88268bbee7\",\n  \"saldoInicial\": 553.880434935139,\n  \"estado\": true,\n  \"clienteId\": \"57b78954-9b24-5b2d-aaa5-828335bfef01\",\n  \"cliente\": {\n    \"value\": \"<Circular reference to #/components/schemas/Cliente detected>\"\n  },\n  \"movimientos\": [\n    {\n      \"tipoMovimiento\": \"string\",\n      \"movimientoId\": \"fcd9ae00-f91f-0b46-555c-2ab8e524427a\",\n      \"fecha\": \"1969-06-30T22:27:30.100Z\",\n      \"valor\": 7982.285359323109,\n      \"saldo\": 6089.003380057352,\n      \"cuentaId\": \"930583d2-b5c1-4a73-d78a-a5b4d5c38c24\",\n      \"cuenta\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n      }\n    },\n    {\n      \"tipoMovimiento\": \"s\",\n      \"movimientoId\": \"651fee16-b1a0-2a00-ed11-029f244e6dfa\",\n      \"fecha\": \"2025-07-16T21:00:08.050Z\",\n      \"valor\": 7571.717054202638,\n      \"saldo\": 5740.462006147979,\n      \"cuentaId\": \"56e2012f-7bcb-7f6b-74f0-d68bff834bf1\",\n      \"cuenta\": {\n        \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n      }\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/cuentas",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"cuentas"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "movimientos",
+					"item": [
+						{
+							"name": "/api/movimientos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/movimientos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"movimientos"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/movimientos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"movimientos"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"tipoMovimiento\": \"string\",\n    \"movimientoId\": \"572998ce-b557-b6a1-8fc5-ac7c4fd9dd13\",\n    \"fecha\": \"2021-09-15T13:23:48.742Z\",\n    \"valor\": 6163.061791998514,\n    \"saldo\": 823.2899645048053,\n    \"cuentaId\": \"db8673dc-194b-efd6-21b7-474e8846a6e8\",\n    \"cuenta\": {\n      \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n    }\n  },\n  {\n    \"tipoMovimiento\": \"string\",\n    \"movimientoId\": \"eb10b795-3ad0-e795-030c-9c7aadd03e83\",\n    \"fecha\": \"1985-05-19T12:52:14.688Z\",\n    \"valor\": 5483.438221108654,\n    \"saldo\": 3622.4133411389103,\n    \"cuentaId\": \"aa12a210-6ece-b02b-60f7-fe79bd051522\",\n    \"cuenta\": {\n      \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n    }\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/movimientos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"tipoMovimiento\": \"string\",\n  \"movimientoId\": \"bf2fe269-9722-49fe-10e9-796c0354d4df\",\n  \"fecha\": \"1983-10-27T10:30:02.421Z\",\n  \"valor\": 4445.416878373887,\n  \"saldo\": 8666.683533423911,\n  \"cuentaId\": \"5aa097c9-75e5-6cb8-d9a0-11ad01babfde\",\n  \"cuenta\": {\n    \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/movimientos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"movimientos"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"tipoMovimiento\": \"string\",\n  \"movimientoId\": \"bf2fe269-9722-49fe-10e9-796c0354d4df\",\n  \"fecha\": \"1983-10-27T10:30:02.421Z\",\n  \"valor\": 4445.416878373887,\n  \"saldo\": 8666.683533423911,\n  \"cuentaId\": \"5aa097c9-75e5-6cb8-d9a0-11ad01babfde\",\n  \"cuenta\": {\n    \"value\": \"<Circular reference to #/components/schemas/Cuenta detected>\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/movimientos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"movimientos"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "reportes",
+					"item": [
+						{
+							"name": "/api/reportes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/reportes?fechaInicio=2007-02-17T23:14:00.925Z&fechaFin=2007-02-17T23:14:00.925Z&clienteId=54012ba5-7e8f-b108-6706-b38cf2bc1451",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"reportes"
+									],
+									"query": [
+										{
+											"key": "fechaInicio",
+											"value": "2007-02-17T23:14:00.925Z"
+										},
+										{
+											"key": "fechaFin",
+											"value": "2007-02-17T23:14:00.925Z"
+										},
+										{
+											"key": "clienteId",
+											"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/reportes?fechaInicio=2007-02-17T23:14:00.925Z&fechaFin=2007-02-17T23:14:00.925Z&clienteId=54012ba5-7e8f-b108-6706-b38cf2bc1451",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"reportes"
+											],
+											"query": [
+												{
+													"key": "fechaInicio",
+													"value": "2007-02-17T23:14:00.925Z"
+												},
+												{
+													"key": "fechaFin",
+													"value": "2007-02-17T23:14:00.925Z"
+												},
+												{
+													"key": "clienteId",
+													"value": "54012ba5-7e8f-b108-6706-b38cf2bc1451"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
