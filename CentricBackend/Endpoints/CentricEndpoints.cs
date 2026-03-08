@@ -64,7 +64,6 @@ namespace CentricBackend.Endpoints
 
                 c.NumeroCuenta = input.NumeroCuenta; c.TipoCuenta = input.TipoCuenta;
                 c.Estado = input.Estado;
-                // El Saldo Inicial no se debería actualizar una vez creada la cuenta por reglas contables
 
                 await db.SaveChangesAsync();
                 return Results.NoContent();
@@ -89,7 +88,6 @@ namespace CentricBackend.Endpoints
                 var cuenta = await db.Cuentas.FindAsync(m.CuentaId);
                 if (cuenta is null) return Results.BadRequest("La cuenta no existe.");
 
-                // Obtener el último saldo registrado. Si no hay movimientos, tomar el Saldo Inicial.
                 var ultimoMovimiento = await db.Movimientos
                     .Where(x => x.CuentaId == m.CuentaId)
                     .OrderByDescending(x => x.Fecha)
@@ -97,10 +95,8 @@ namespace CentricBackend.Endpoints
 
                 decimal saldoActual = ultimoMovimiento != null ? ultimoMovimiento.Saldo : cuenta.SaldoInicial;
 
-                // Asumimos que el frontend enviará el Valor en negativo si es retiro, o en positivo si es depósito
                 decimal nuevoSaldo = saldoActual + m.Valor;
 
-                // Regla estricta solicitada en la prueba
                 if (nuevoSaldo < 0)
                     return Results.BadRequest(new { Mensaje = "Saldo no disponible" });
 

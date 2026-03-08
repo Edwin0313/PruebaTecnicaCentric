@@ -1,0 +1,103 @@
+<section class="crud-section">
+    <header class="crud-header">
+        <h2 id="page-title">Movimientos Bancarios</h2>
+        <button type="button" class="btn btn-primary" (click)="abrirFormulario()">+ Nuevo Movimiento</button>
+    </header>
+
+    @if (isLoading()) {
+    <div class="loading-indicator" role="status">Procesando solicitud...</div>
+    }
+
+    @if (mensajeError()) {
+    <div class="alert alert-danger" role="alert">
+        <strong>¡Error de Transacción!</strong> {{ mensajeError() }}
+    </div>
+    }
+
+    @if (mostrarFormulario()) {
+    <div class="form-card">
+        <h3>Registrar Transacción</h3>
+
+        <form [formGroup]="movimientoForm" (ngSubmit)="guardarMovimiento()" novalidate>
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="cuentaId">Cuenta Afectada <span class="required">*</span></label>
+                    <select id="cuentaId" formControlName="cuentaId">
+                        <option value="" disabled>Seleccione una cuenta...</option>
+                        @for (cuenta of listaCuentas(); track cuenta.cuentaId) {
+                        <option [value]="cuenta.cuentaId">{{ cuenta.numeroCuenta }} - {{ cuenta.tipoCuenta }}</option>
+                        }
+                    </select>
+                    @if (movimientoForm.controls.cuentaId.invalid && movimientoForm.controls.cuentaId.touched) {
+                    <span class="error-msg">Debe seleccionar una cuenta.</span>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoMovimiento">Tipo de Movimiento <span class="required">*</span></label>
+                    <select id="tipoMovimiento" formControlName="tipoMovimiento">
+                        <option value="Depósito">Depósito (+)</option>
+                        <option value="Retiro">Retiro (-)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="valor">Monto ($) <span class="required">*</span></label>
+                    <input id="valor" type="number" step="0.01" formControlName="valor" />
+                    @if (movimientoForm.controls.valor.invalid && movimientoForm.controls.valor.touched) {
+                    <span class="error-msg">El monto debe ser mayor a cero.</span>
+                    }
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" (click)="cerrarFormulario()">Cancelar</button>
+                <button type="submit" class="btn btn-primary"
+                    [disabled]="movimientoForm.invalid || isLoading()">Registrar</button>
+            </div>
+        </form>
+    </div>
+    }
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Número de Cuenta</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Saldo Disponible</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (mov of listaMovimientos(); track mov.movimientoId) {
+                <tr>
+                    <td>{{ mov.fecha | date:'short' }}</td>
+                    <td>{{ obtenerNombreClientePorCuenta(mov.cuentaId) }}</td>
+                    <td><strong>{{ obtenerNumeroCuenta(mov.cuentaId) }}</strong></td>
+                    <td>
+                        <span class="badge" [class.badge-active]="mov.tipoMovimiento === 'Depósito'"
+                            [class.badge-inactive]="mov.tipoMovimiento === 'Retiro'">
+                            {{ mov.tipoMovimiento }}
+                        </span>
+                    </td>
+                    <td>
+                        <strong [class.text-danger]="mov.valor < 0" [class.text-success]="mov.valor > 0">
+                            ${{ mov.valor }}
+                        </strong>
+                    </td>
+                    <td><strong>${{ mov.saldo }}</strong></td>
+                </tr>
+                } @empty {
+                <tr>
+                    <td colspan="4" class="empty-state">No hay movimientos registrados.</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

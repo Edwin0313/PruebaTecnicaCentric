@@ -1,0 +1,117 @@
+<section class="crud-section">
+    <header class="crud-header">
+        <h2 id="page-title">Mantenimiento de Clientes</h2>
+        <button type="button" class="btn btn-primary" (click)="abrirFormulario()" aria-label="Crear un nuevo cliente">
+            + Nuevo
+        </button>
+    </header>
+
+    @if (isLoading()) {
+    <div class="loading-indicator" role="status" aria-live="polite">
+        Procesando solicitud...
+    </div>
+    }
+
+    @if (mostrarFormulario()) {
+    <div class="form-card" role="region" aria-labelledby="form-title">
+        <h3 id="form-title">{{ clienteEnEdicion() ? 'Editar Cliente' : 'Nuevo Cliente' }}</h3>
+
+        <form [formGroup]="clienteForm" (ngSubmit)="guardarCliente()" novalidate>
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="nombres">Nombres completos <span class="required" aria-hidden="true">*</span></label>
+                    <input id="nombres" type="text" formControlName="nombres"
+                        [attr.aria-invalid]="clienteForm.controls.nombres.invalid && clienteForm.controls.nombres.touched" />
+                    @if (clienteForm.controls.nombres.invalid && clienteForm.controls.nombres.touched) {
+                    <span class="error-msg" role="alert">El nombre es obligatorio (máx 100 caracteres).</span>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección <span class="required" aria-hidden="true">*</span></label>
+                    <input id="direccion" type="text" formControlName="direccion" />
+                    @if (clienteForm.controls.direccion.invalid && clienteForm.controls.direccion.touched) {
+                    <span class="error-msg" role="alert">La dirección es obligatoria.</span>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono <span class="required" aria-hidden="true">*</span></label>
+                    <input id="telefono" type="tel" formControlName="telefono" />
+                    @if (clienteForm.controls.telefono.invalid && clienteForm.controls.telefono.touched) {
+                    <span class="error-msg" role="alert">El teléfono es obligatorio.</span>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="contrasena">Contraseña <span class="required" aria-hidden="true">*</span></label>
+                    <input id="contrasena" type="password" formControlName="contrasena" />
+                    @if (clienteForm.controls.contrasena.invalid && clienteForm.controls.contrasena.touched) {
+                    <span class="error-msg" role="alert">La contraseña es obligatoria.</span>
+                    }
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label for="estado">
+                        <input id="estado" type="checkbox" formControlName="estado" />
+                        Cliente Activo
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" (click)="cancelarEdicion()">Cancelar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="clienteForm.invalid || isLoading()">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+    }
+
+    <div class="search-container">
+        <input type="text" placeholder="🔍 Buscar por nombre, dirección o teléfono..."
+            (input)="actualizarBusqueda($event)" class="search-input" />
+    </div>
+    <div class="table-responsive">
+        <table aria-labelledby="page-title">
+            <thead>
+                <tr>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (cliente of clientesFiltrados(); track cliente.clienteId) {
+                <tr>
+                    <td>{{ cliente.nombres }}</td>
+                    <td>{{ cliente.direccion }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td>
+                        <span class="badge" [class.badge-active]="cliente.estado"
+                            [class.badge-inactive]="!cliente.estado">
+                            {{ cliente.estado ? 'Activo' : 'Inactivo' }}
+                        </span>
+                    </td>
+                    <td class="action-cells">
+                        <button type="button" class="btn-icon edit" (click)="editarCliente(cliente)"
+                            aria-label="Editar cliente">✏️</button>
+                        <button type="button" class="btn-icon delete" (click)="eliminarCliente(cliente.clienteId)"
+                            aria-label="Eliminar cliente">🗑️</button>
+                    </td>
+                </tr>
+                } @empty {
+                <tr>
+                    <td colspan="5" class="empty-state">No hay clientes registrados. Haz clic en "Nuevo" para comenzar.
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
