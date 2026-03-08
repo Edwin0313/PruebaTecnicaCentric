@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { Cuenta } from '../../core/models/cuenta.model';
+import { environment } from '../../../../environments/environment';
+import { Cuenta } from '../../../core/models/cuenta.model';
 
 @Injectable({ providedIn: 'root' })
 export class CuentaService {

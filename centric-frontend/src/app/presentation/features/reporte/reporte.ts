@@ -1,16 +1,17 @@
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { Cliente } from '../../../core/models/cliente.model';
 import { ReporteMovimiento } from '../../../core/models/reporte.model';
-import { ClienteService } from '../../../infrastructure/services/cliente.service';
-import { MovimientoService } from '../../../infrastructure/services/movimiento.service';
+import { ClienteService } from '../../../infrastructure/services/cliente/cliente.service';
+import { MovimientoService } from '../../../infrastructure/services/movimiento/movimiento.service';
+import { FiltroReporte, ReporteForm } from './components/reporte-form/reporte-form';
+import { ReporteList } from './components/reporte-list/reporte-list';
 
 @Component({
   selector: 'app-reporte',
-  imports: [ReactiveFormsModule, DatePipe, CurrencyPipe],
+  imports: [ReporteForm, ReporteList],
   templateUrl: './reporte.html',
   styleUrl: './reporte.css',
   providers: [DatePipe],
@@ -19,7 +20,6 @@ import { MovimientoService } from '../../../infrastructure/services/movimiento.s
 export class Reportes implements OnInit {
   private readonly movimientoService = inject(MovimientoService);
   private readonly clienteService = inject(ClienteService);
-  private readonly fb = inject(FormBuilder);
   private readonly datePipe = inject(DatePipe);
 
   listaReporte = signal<ReporteMovimiento[]>([]);
@@ -27,12 +27,8 @@ export class Reportes implements OnInit {
   isLoading = signal<boolean>(false);
   busquedaRealizada = signal<boolean>(false);
 
-  // Formulario para los parámetros de búsqueda
-  filtroForm = this.fb.nonNullable.group({
-    clienteId: ['', [Validators.required]],
-    fechaInicio: ['', [Validators.required]],
-    fechaFin: ['', [Validators.required]]
-  });
+  // Guardamos los filtros usados para poder pasarlos al PDF luego
+  filtrosActuales = signal<FiltroReporte | null>(null);
 
   ngOnInit(): void {
     this.cargarClientes();
@@ -45,16 +41,11 @@ export class Reportes implements OnInit {
     });
   }
 
-  generarReporte(): void {
-    if (this.filtroForm.invalid) {
-      this.filtroForm.markAllAsTouched();
-      return;
-    }
-
+  generarReporte(filtros: FiltroReporte): void {
     this.isLoading.set(true);
-    const { fechaInicio, fechaFin, clienteId } = this.filtroForm.getRawValue();
+    this.filtrosActuales.set(filtros); // Guardamos el estado actual
 
-    this.movimientoService.getReporte(fechaInicio, fechaFin, clienteId).subscribe({
+    this.movimientoService.getReporte(filtros.fechaInicio, filtros.fechaFin, filtros.clienteId).subscribe({
       next: (datos) => {
         this.listaReporte.set(datos);
         this.busquedaRealizada.set(true);
@@ -66,14 +57,18 @@ export class Reportes implements OnInit {
       }
     });
   }
+
   exportarPDF(): void {
+    const filtros = this.filtrosActuales();
+    if (!filtros) return;
+
     const doc = new jsPDF();
     doc.setFontSize(18);
     doc.text('Estado de Cuenta', 14, 20);
     doc.setFontSize(11);
     doc.setTextColor(100);
-    const { fechaInicio, fechaFin } = this.filtroForm.getRawValue();
-    doc.text(`Periodo: ${fechaInicio} al ${fechaFin}`, 14, 28);
+    doc.text(`Periodo: ${filtros.fechaInicio} al ${filtros.fechaFin}`, 14, 28);
+
     const datosTabla = this.listaReporte().map(item => [
       this.datePipe.transform(item.fecha, 'dd/MM/yyyy') || '',
       item.cliente,
@@ -92,6 +87,7 @@ export class Reportes implements OnInit {
       theme: 'grid',
       headStyles: { fillColor: [0, 86, 179] }
     });
-    doc.save(`Estado_Cuenta_${fechaInicio}_al_${fechaFin}.pdf`);
+
+    doc.save(`Estado_Cuenta_${filtros.fechaInicio}_al_${filtros.fechaFin}.pdf`);
   }
 }

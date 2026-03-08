@@ -9,107 +9,18 @@
     }
 
     @if (mostrarFormulario()) {
-    <div class="form-card">
-        <h3>{{ cuentaEnEdicion() ? 'Editar Cuenta' : 'Nueva Cuenta' }}</h3>
-
-        <form [formGroup]="cuentaForm" (ngSubmit)="guardarCuenta()" novalidate>
-            <div class="form-grid">
-
-                <div class="form-group">
-                    <label for="clienteId">Cliente Propietario <span class="required">*</span></label>
-                    <select id="clienteId" formControlName="clienteId">
-                        <option value="" disabled>Seleccione un cliente...</option>
-                        @for (cliente of listaClientes(); track cliente.clienteId) {
-                        <option [value]="cliente.clienteId">{{ cliente.nombres }}</option>
-                        }
-                    </select>
-                    @if (cuentaForm.controls.clienteId.invalid && cuentaForm.controls.clienteId.touched) {
-                    <span class="error-msg">Debe seleccionar un cliente.</span>
-                    }
-                </div>
-
-                <div class="form-group">
-                    <label for="numeroCuenta">Número de Cuenta <span class="required">*</span></label>
-                    <input id="numeroCuenta" type="text" formControlName="numeroCuenta" />
-                    @if (cuentaForm.controls.numeroCuenta.invalid && cuentaForm.controls.numeroCuenta.touched) {
-                    <span class="error-msg">El número es obligatorio.</span>
-                    }
-                </div>
-
-                <div class="form-group">
-                    <label for="tipoCuenta">Tipo de Cuenta <span class="required">*</span></label>
-                    <select id="tipoCuenta" formControlName="tipoCuenta">
-                        <option value="Ahorros">Ahorros</option>
-                        <option value="Corriente">Corriente</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="saldoInicial">Saldo Inicial ($) <span class="required">*</span></label>
-                    <input id="saldoInicial" type="number" step="0.01" formControlName="saldoInicial" />
-                    @if (cuentaForm.controls.saldoInicial.invalid && cuentaForm.controls.saldoInicial.touched) {
-                    <span class="error-msg">El saldo inicial debe ser 0 o mayor.</span>
-                    }
-                </div>
-
-                <div class="form-group checkbox-group">
-                    <label>
-                        <input type="checkbox" formControlName="estado" />
-                        Cuenta Activa
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="form-actions">
-                <button type="button" class="btn btn-secondary" (click)="cerrarFormulario()">Cancelar</button>
-                <button type="submit" class="btn btn-primary"
-                    [disabled]="cuentaForm.invalid || isLoading()">Guardar</button>
-            </div>
-        </form>
-    </div>
+    <app-cuenta-form [cuentaEnEdicion]="cuentaEnEdicion()" [listaClientes]="listaClientes()" [isLoading]="isLoading()"
+        (guardar)="guardarCuenta($event)" (cancelar)="cerrarFormulario()">
+    </app-cuenta-form>
     }
     <div class="search-container">
-        <input type="text" placeholder="🔍 Buscar por número de cuenta, tipo de cuenta o saldo..."
-            (input)="actualizarBusqueda($event)" class="search-input" />
+        <input type="text" placeholder="Buscar por número o tipo de cuenta..." (input)="actualizarBusqueda($event)"
+            class="search-input" />
     </div>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th>Número Cuenta</th>
-                    <th>Tipo</th>
-                    <th>Cliente</th>
-                    <th>Saldo Inicial</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (cuenta of cuentasFiltradas(); track cuenta.cuentaId) {
-                <tr>
-                    <td><strong>{{ cuenta.numeroCuenta }}</strong></td>
-                    <td>{{ cuenta.tipoCuenta }}</td>
-                    <td>{{ obtenerNombreCliente(cuenta.clienteId) }}</td>
-                    <td>${{ cuenta.saldoInicial }}</td>
-                    <td>
-                        <span class="badge" [class.badge-active]="cuenta.estado"
-                            [class.badge-inactive]="!cuenta.estado">
-                            {{ cuenta.estado ? 'Activa' : 'Inactiva' }}
-                        </span>
-                    </td>
-                    <td class="action-cells">
-                        <button type="button" class="btn-icon" (click)="editarCuenta(cuenta)" title="Editar">✏️</button>
-                        <button type="button" class="btn-icon" (click)="eliminarCuenta(cuenta.cuentaId)"
-                            title="Eliminar">🗑️</button>
-                    </td>
-                </tr>
-                } @empty {
-                <tr>
-                    <td colspan="5" class="empty-state">No hay cuentas registradas.</td>
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+
+
+    <app-cuenta-list [cuentas]="cuentasFiltradas()" [clientes]="listaClientes()" (editar)="editarCuenta($event)"
+        (eliminar)="eliminarCuenta($event)">
+    </app-cuenta-list>
+
 </section>

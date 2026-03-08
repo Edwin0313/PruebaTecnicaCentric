@@ -1,45 +1,38 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Cliente } from '../../../core/models/cliente.model';
-import { ClienteService } from '../../../infrastructure/services/cliente.service';
+import { ClienteService } from '../../../infrastructure/services/cliente/cliente.service';
+import { ClienteForm } from './components/cliente-form/cliente-form';
+import { ClienteList } from './components/cliente-list/cliente-list';
 
 @Component({
   selector: 'app-cliente',
-  imports: [ReactiveFormsModule],
+  imports: [ClienteList, ClienteForm], // <-- Importamos los Dumb Components
   templateUrl: './cliente.html',
   styleUrl: './cliente.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Clientes implements OnInit {
   private readonly clienteService = inject(ClienteService);
-  private readonly fb = inject(FormBuilder);
 
   listaClientes = signal<Cliente[]>([]);
   isLoading = signal<boolean>(false);
   clienteEnEdicion = signal<Cliente | null>(null);
   mostrarFormulario = signal<boolean>(false);
-  clienteForm = this.fb.nonNullable.group({
-    nombres: ['', [Validators.required, Validators.maxLength(100)]],
-    direccion: ['', [Validators.required, Validators.maxLength(200)]],
-    telefono: ['', [Validators.required, Validators.maxLength(20)]],
-    contrasena: ['', [Validators.required]],
-    estado: [true]
-  });
   terminoBusqueda = signal<string>('');
 
-  ngOnInit(): void {
-    this.cargarClientes();
-  }
   clientesFiltrados = computed(() => {
     const termino = this.terminoBusqueda().toLowerCase();
-    if (!termino) return this.listaClientes(); // Si no hay búsqueda, muestra todos
-
+    if (!termino) return this.listaClientes();
     return this.listaClientes().filter(c =>
       c.nombres.toLowerCase().includes(termino) ||
       c.direccion.toLowerCase().includes(termino) ||
       c.telefono.includes(termino)
     );
   });
+
+  ngOnInit(): void {
+    this.cargarClientes();
+  }
 
   cargarClientes(): void {
     this.isLoading.set(true);
@@ -48,42 +41,38 @@ export class Clientes implements OnInit {
         this.listaClientes.set(data);
         this.isLoading.set(false);
       },
-      error: (err) => {
-        console.error('Error al cargar clientes:', err);
-        this.isLoading.set(false);
-      }
+      error: () => this.isLoading.set(false)
     });
   }
+
   actualizarBusqueda(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.terminoBusqueda.set(input.value);
   }
 
-  guardarCliente(): void {
-    if (this.clienteForm.invalid) {
-      this.clienteForm.markAllAsTouched();
-      return;
-    }
+  abrirFormulario(): void {
+    this.clienteEnEdicion.set(null);
+    this.mostrarFormulario.set(true);
+  }
 
+  // Método adaptado para recibir el DTO emitido por el Dumb Component
+  guardarCliente(formValue: Partial<Cliente>): void {
     this.isLoading.set(true);
-    const formValue = this.clienteForm.getRawValue();
     const clienteActual = this.clienteEnEdicion();
 
     if (clienteActual) {
-      this.clienteService.updateCliente(clienteActual.clienteId, formValue).subscribe({
+      this.clienteService.updateCliente(clienteActual.clienteId, formValue as Cliente).subscribe({
         next: () => {
           this.cargarClientes();
           this.cancelarEdicion();
-          this.mostrarFormulario.set(false);
         },
         error: () => this.isLoading.set(false)
       });
     } else {
-      this.clienteService.createCliente(formValue).subscribe({
+      this.clienteService.createCliente(formValue as Cliente).subscribe({
         next: () => {
           this.cargarClientes();
           this.cancelarEdicion();
-          this.mostrarFormulario.set(false);
         },
         error: () => this.isLoading.set(false)
       });
@@ -92,13 +81,6 @@ export class Clientes implements OnInit {
 
   editarCliente(cliente: Cliente): void {
     this.clienteEnEdicion.set(cliente);
-    this.clienteForm.patchValue({
-      nombres: cliente.nombres,
-      direccion: cliente.direccion,
-      telefono: cliente.telefono,
-      contrasena: cliente.contrasena,
-      estado: cliente.estado
-    });
     this.mostrarFormulario.set(true);
   }
 
@@ -113,13 +95,7 @@ export class Clientes implements OnInit {
   }
 
   cancelarEdicion(): void {
-    this.clienteForm.reset();
     this.clienteEnEdicion.set(null);
     this.mostrarFormulario.set(false);
-  }
-  abrirFormulario(): void {
-    this.clienteForm.reset({ estado: true });
-    this.clienteEnEdicion.set(null);
-    this.mostrarFormulario.set(true);
   }
 }

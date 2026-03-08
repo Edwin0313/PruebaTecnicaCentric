@@ -1,0 +1,34 @@
+services:
+  # 1. Base de Datos (SQL Server)
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: centric-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong@Password123
+    ports:
+      - "1433:1433"
+
+  # 2. Backend API
+  backend:
+    build:
+      context: ./CentricBackend
+      dockerfile: Dockerfile
+    container_name: centric-api
+    ports:
+      - "5000:8080"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=CentricDB;User Id=sa;Password=YourStrong@Password123;TrustServerCertificate=True;
+    depends_on:
+      - sqlserver
+
+  # 3. Frontend Angular
+  frontend:
+    build:
+      context: ./centric-frontend
+      dockerfile: Dockerfile
+    container_name: centric-web
+    ports:
+      - "80:80"
+    depends_on:
+      - backend

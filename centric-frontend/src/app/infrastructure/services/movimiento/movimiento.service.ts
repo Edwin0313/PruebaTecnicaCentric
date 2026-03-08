@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { Movimiento } from '../../core/models/movimiento.model';
-import { ReporteMovimiento } from '../../core/models/reporte.model';
+import { environment } from '../../../../environments/environment';
+import { Movimiento } from '../../../core/models/movimiento.model';
+import { ReporteMovimiento } from '../../../core/models/reporte.model';
 
 @Injectable({ providedIn: 'root' })
 export class MovimientoService {
