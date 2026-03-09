@@ -6,7 +6,7 @@ Prueba técnica desarrollada con una arquitectura enfocada en **Mantenibilidad**
 
 Este proyecto utiliza una separación clara de responsabilidades:
 
-- **Frontend (Angular 18):**
+- **Frontend:**
   - **Patrón Smart & Dumb Components:** Separación de la lógica de estado (Smart) de la lógica de presentación (Dumb).
   - **Signals & Computed:** Gestión reactiva del estado sin sobrecargar el ciclo de detección de cambios.
   - **TDD (Test Driven Development):** Cobertura de pruebas superior al **86%**, validando lógica de negocio y manejo de errores.
