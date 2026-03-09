@@ -1,7 +1,7 @@
 import { Cuenta } from './cuenta.model';
 
 export interface Movimiento {
-    movimientoId?: string; // Opcional al crear
+    movimientoId?: string;
     fecha?: string;
     tipoMovimiento: string;
     valor: number;

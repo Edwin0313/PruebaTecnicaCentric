@@ -49,7 +49,7 @@ describe('ReporteForm (Dumb Component)', () => {
     it('NO debe emitir "generar" si faltan fechas', () => {
         const emitSpy = jest.spyOn(component.generar, 'emit');
 
-        component.filtroForm.patchValue({ clienteId: '1' }); // Faltan las fechas
+        component.filtroForm.patchValue({ clienteId: '1' });
         component.onSubmit();
 
         expect(emitSpy).not.toHaveBeenCalled();

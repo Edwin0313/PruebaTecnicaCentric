@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
-import { App } from './app'; // Asegúrate de que tu clase en app.ts se llame 'App'
+import { App } from './app';
 
 describe('App', () => {
   beforeEach(async () => {

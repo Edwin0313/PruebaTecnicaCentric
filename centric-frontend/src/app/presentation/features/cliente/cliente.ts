@@ -6,7 +6,7 @@ import { ClienteList } from './components/cliente-list/cliente-list';
 
 @Component({
   selector: 'app-cliente',
-  imports: [ClienteList, ClienteForm], // <-- Importamos los Dumb Components
+  imports: [ClienteList, ClienteForm],
   templateUrl: './cliente.html',
   styleUrl: './cliente.css',
   changeDetection: ChangeDetectionStrategy.OnPush

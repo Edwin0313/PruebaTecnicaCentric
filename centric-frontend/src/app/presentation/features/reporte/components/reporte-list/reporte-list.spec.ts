@@ -27,7 +27,6 @@ describe('ReporteList (Dumb Component)', () => {
         const filas = fixture.debugElement.queryAll(By.css('tbody tr'));
         expect(filas.length).toBe(1);
         const contenidoFila = filas[0].nativeElement.textContent;
-        // Validamos que el CurrencyPipe haya funcionado (debe contener el símbolo de dólar y decimales)
         expect(contenidoFila).toContain('$100.00');
         expect(contenidoFila).toContain('Juan');
     });

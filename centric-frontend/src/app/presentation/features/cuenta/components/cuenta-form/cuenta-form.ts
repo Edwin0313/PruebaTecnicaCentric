@@ -102,7 +102,6 @@ export class CuentaForm {
 
     onSubmit(): void {
         if (this.cuentaForm.valid) {
-            // getRawValue() incluye el saldoInicial aunque esté deshabilitado
             this.guardar.emit(this.cuentaForm.getRawValue());
         } else {
             this.cuentaForm.markAllAsTouched();

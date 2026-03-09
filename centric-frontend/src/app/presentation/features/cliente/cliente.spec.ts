@@ -65,7 +65,6 @@ describe('Clientes (Smart Component)', () => {
     component.cargarClientes();
     expect(component.isLoading()).toBeFalsy();
   });
-  // ... (dentro del describe de Clientes Smart Component)
 
   it('debe llamar a updateCliente cuando hay un cliente en edición', () => {
     clienteServiceMock.updateCliente.mockReturnValue(of({}));

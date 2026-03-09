@@ -23,15 +23,32 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 
 app.UseCors("AllowAngular");
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.MapCentricEndpoints();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<CentricDbContext>();
+        // Esto creará la base de datos y las tablas según tus modelos
+        context.Database.EnsureCreated();
+        Console.WriteLine("Conexión exitosa: CentricDB ha sido verificada/creada.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al inicializar la base de datos: {ex.Message}");
+    }
+}
 app.Run();

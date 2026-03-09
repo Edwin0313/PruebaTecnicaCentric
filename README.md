@@ -12,9 +12,7 @@ Este proyecto utiliza una separación clara de responsabilidades:
   - **TDD (Test Driven Development):** Cobertura de pruebas superior al **86%**, validando lógica de negocio y manejo de errores.
   - **Styles:** Sistema de diseño centralizado con variables CSS y tematización corporativa.
 
-- **Backend (.NET 8):**
-  - **Clean Architecture:** División en capas de Core, Application e Infrastructure.
-  - **Dockerized:** Orquestación completa con SQL Server.
+- **Dockerized:** Orquestación completa con SQL Server.
 
 ## Cómo ejecutar el proyecto
 

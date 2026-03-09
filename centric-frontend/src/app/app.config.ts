@@ -5,7 +5,6 @@ import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // Eliminamos provideZoneChangeDetection y activamos el modo Zoneless
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideHttpClient(withFetch())
